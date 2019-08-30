@@ -1,0 +1,7 @@
+ <marquee class='marqee'><%= "Welcome #{current_user.name}" %></marquee>
+
+<h1>Edit Bus</h1>
+
+<%= render 'form', bus: @bus %>
+
+<%= link_to 'Back', owner_buses_path, class:'btn btn-primary' %>

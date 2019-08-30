@@ -1,0 +1,17 @@
+$(".form-group1").html("<%= j render(partial: 'reservations/new_form', collection: @total_seats, as: :seat, locals: {date: @date}) %>");
+
+$("#form").html("<%= @count_seat %>");
+
+$("#seat_example").slideDown(1000);
+
+
+var value=0;
+  $('.check_box_class').on('change', function(){
+  value += this.checked ? 1 : -1
+    $('#number_field').val(value);
+  })
+
+
+
+
+

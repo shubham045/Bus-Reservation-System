@@ -1,0 +1,15 @@
+
+<% flag = available_seat?(seat,date) ? false : true %>
+
+<label style="display: inline;">
+
+    <%=check_box_tag("reservation[seat_ids][]",seat, flag, { disabled: flag, class: "check_box_class", id: "seat"} )%>
+
+    <% if flag %>
+        <%= image_tag( "888.png",:width => 50, class:"images_class1", title:"Already Booked Seat") %>
+    <% else %>
+       <%= image_tag( "888.png",:width => 50, class:"images_class", title:"Available Seat #{seat} ") %>
+    <% end %>
+
+</label>
+

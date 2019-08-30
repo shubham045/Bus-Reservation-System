@@ -1,0 +1,40 @@
+<%= form_for [:owner,@bus] do |form| %>
+  <% if bus.errors.any? %>
+    <div id="error_explanation">
+     <ul>
+      <% bus.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <table class="table table-striped">
+    <tr>
+        <td><%= form.label :name %></td>
+        <td> <%= form.text_field :name %></td>
+    </tr>
+    <tr>
+        <td><%= form.label :registration_no %></td>
+        <td> <%= form.text_field :registration_no %></td>
+    </tr>
+    <tr>
+        <td><%= form.label :source %></td>
+        <td><%= form.text_field :source %></td>
+    </tr>
+    <tr>
+        <td><%= form.label :destination %></td>
+        <td><%= form.text_field :destination %></td>
+    </tr>
+    <tr>
+        <td><%= form.label :total_seats %></td>
+        <td><%= form.number_field :total_seats %></td>
+    </tr>
+    <tr>
+        <td><%= form.label :cick_for_availability %></td>
+        <td><%= form.check_box :status %></td>
+    </tr>
+
+  </table>
+     <center><%= form.submit %></center>
+<% end %>

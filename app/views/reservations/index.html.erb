@@ -1,0 +1,23 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Bus Name</th>
+      <th>Date</th>
+      <th>Seats</th>
+      <th>Action </th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @reservations.each do |reservation| %>
+      <tr>
+        <td><%= reservation.bus.name %></td>
+        <td><%= reservation.date.strftime("%d-%m-%Y ") %></td>
+        <td><%= reservation.no_of_seats  %></td>
+        <td>
+        <%= link_to 'Cancle Registration', cancle_reservation_reservation_path(reservation), data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %></</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%=  link_to 'Back', buses_path, class:'btn btn-primary' %>

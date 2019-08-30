@@ -1,0 +1,45 @@
+<%= form_for [@bus, @reservation] do |f| %>
+
+  <div class="form-group">
+      <%= f.label :date, :class => 'control-label col-lg-2' %>
+      <div class="col-lg-10">
+        <%= f.date_field :date, :class => 'form-control', min: Date.today, max: 1.year.from_now %>
+      </div>
+      <%=f.error_span(:date) %>
+  </div>
+
+  <div class="form-group2">
+      <%= f.label :no_of_seats, :class => 'control-label col-lg-2' %>
+      <div class="col-lg-10">
+        <%= f.number_field :no_of_seats, :class => 'form-control', :id => 'number_field', remote: true, :readonly => true %>
+      </div>
+        <%=f.error_span(:no_of_seats) %>
+  </div>
+ <label class="control-label col-lg-2" style="display: inline-flex;" >Available Seats  </label>
+
+  <div id="form" >
+
+  </div>
+
+  <br>
+
+  <div class="form-group1">
+
+  </div>
+
+
+  <div class="form-group">
+      <div class="col-lg-offset-2 col-lg-10">
+        <%= f.submit onclick:'this.form.submit();', class:'btn btn-success' %>
+        <%= link_to 'Cancel', buses_path, :class => 'btn btn-danger' %>
+        <%= hidden_field_tag(:bus_id, @bus.id) %>
+      </div>
+  </div>
+
+
+<% end %>
+
+
+
+
+

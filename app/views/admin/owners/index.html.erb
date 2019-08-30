@@ -1,0 +1,37 @@
+
+
+
+<%- model_class = Owner -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:current_status) %></th>
+      <th> Reservations </th>
+      <th> Buses </th>
+      <th><%= model_class.human_attribute_name(:action ) %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @owners.each do |owner| %>
+      <tr  class="table-primary">
+        <td><%= owner.user.name %></td>
+        <td><%= owner.user.status %></td>
+        <td> <%= link_to "All Reservations", admin_owner_reservations_path(owner) %> </td>
+
+        <td> <%= link_to "All buses", admin_owner_buses_path(owner) %> </td>
+  <% if owner.user.status == 'approve' %>
+        <td><%= link_to 'Suspend', update_owner_admin_owner_path(owner), class:"btn btn-primary",method: :get %></td>
+  <% else %>
+        <td><%= link_to 'Approve', update_owner_admin_owner_path(owner), class:"btn btn-success",method: :get %></td>
+    <% end %>
+
+    <td><%= link_to 'Delete', admin_owner_path(owner), class:'btn btn-danger', method: :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

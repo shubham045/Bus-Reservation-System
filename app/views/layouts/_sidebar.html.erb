@@ -1,0 +1,43 @@
+<div class="col-lg-3">
+  <% if user_signed_in?  %>
+
+          <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+              <li class="nav-header"></li>
+
+      <!-- For Customer -->
+          <% if user_signed_in? and current_user.customer? %>
+             <center><h4>User Section</h4></center>
+            <li><%= link_to "My Reservations",  reservations_path, method: :get, class:'btn btn-default' %></li><br>
+            <li><%= link_to "Book My Seats",  buses_path, class:'btn btn-default' %></li>
+          <% end %>
+
+      <!-- For Owner -->
+              <% if user_signed_in? and current_user.owner? %>
+                <center><h4>Owner Section</h4></center><br>
+                <li><%= link_to "My buses", owner_buses_path, class:'btn btn-default' %></li><br>
+                <li><%= link_to "All Reservations", owner_reservations_path, class:'btn btn-default' %></li>
+              <% end %>
+
+      <!-- For Admin -->
+             <% if user_signed_in? and current_user.admin? %>
+                <center><h4>Admin Section</h4></center>
+                <li><%= link_to "Owners List",  admin_owners_path, class:'btn btn-default'  %></li><br>
+                <li><%= link_to "All Reservations", admin_reservations_path, class:'btn btn-default', method: :get %></li><br>
+                <li><%= link_to "Bus List", admin_buses_path, class:'btn btn-default' %></li>
+              <% end %>
+               </ul>
+  <%end%>
+
+          </div>
+
+<!-- For Seat Example -->
+
+    <div id="seat_example" style="display: none" >
+      <label>Booked Seat</label>
+        <%= image_tag( "888.png",:width => 50, class:"images_class1 image_demo", id:"seat_image") %><br>
+      <label>Available Seat</label>
+        <%= image_tag( "888.png",:width => 50, class:"images_class image_demo", id:"seat_image1") %>
+    </div>
+
+</div>

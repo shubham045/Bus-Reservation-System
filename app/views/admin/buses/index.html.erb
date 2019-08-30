@@ -1,0 +1,47 @@
+
+    <%= form_tag({controller: "buses", action: "index"}, method: "get", class: "") do %>
+        <%= label_tag(:name, "Name:") %>
+        <%= text_field_tag(:name) %>
+
+        <%= label_tag(:source, "Source:") %>
+        <%= text_field_tag(:source) %>
+
+        <%= label_tag(:destination, "Destination:") %>
+        <%= text_field_tag(:destination) %>
+
+        <%= submit_tag "Search", :class => 'btn btn-info glyphicon glyphicon-search' %>
+    <% end %>
+<br>
+
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Bus Name</th>
+      <th>Owner Name</th>
+      <th>Source</th>
+      <th>Destination</th>
+      <th>Reservations</th>
+      <th>Total seats</th>
+      <th>Status</th>
+
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @buses.each do |bus| %>
+      <tr>
+        <td><%= bus.name %></td>
+        <td><%= bus.owner.user.name.capitalize %></td>
+        <td><%= bus.source %></td>
+        <td><%= bus.destination %></td>
+        <td><%= link_to 'All Reservations',admin_bus_reservations_path(bus)  %></td>
+        <td><%= bus.total_seats %></td>
+        <td><%= bus.status %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<%= link_to 'Back', buses_path, class:'btn btn-success' %>

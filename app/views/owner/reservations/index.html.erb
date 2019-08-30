@@ -1,0 +1,49 @@
+<marquee class='marqee'><%= "Welcome #{current_user.name}" %></marquee>
+
+
+
+    <%= form_tag({controller: "owner/reservations", action: "index"}, method: "get", class: "") do %>
+        <div class="input-group">
+            <%= date_field_tag :date, params[:date], placeholder: "Search By Name" %>
+        </div>
+
+        <div class="input-group-btn">
+            <%= button_tag "Search", :class => 'btn btn-info glyphicon glyphic' %>
+        </div>
+    <% end %>
+
+
+<%- model_class = Reservation -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:bus_name) %></th>
+       <th><%= model_class.human_attribute_name(:customer_name) %></th>
+      <th><%= model_class.human_attribute_name(:date) %></th>
+      <th><%= model_class.human_attribute_name(:no_of_seats) %></th>
+      <th><%= model_class.human_attribute_name(:status) %></th>
+    </tr>
+  </thead>
+  <tbody>
+
+<div class="new_date">
+    <% @reservations.each do |reservation|  %>
+      <tr>
+        <td><%= reservation.bus.name %></td>
+        <td><%= reservation.user.name %></td>
+        <td><%= reservation.date.strftime("%d-%m-%Y ") %></td>
+        <td><%= reservation.no_of_seats %></td>
+        <td><%= reservation.status  %></td>
+        <td><% if reservation.status == 'cancelled' %>
+            <%= link_to 'Delete', owner_bus_reservation_path(reservation.bus,reservation),class:'btn btn-danger', method: :delete %>
+        <%end%></td>
+      </tr>
+</div>
+
+      <% end %>
+    </tbody>
+  </table>

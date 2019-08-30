@@ -1,0 +1,45 @@
+
+     <%= form_tag({controller: "buses", action: "index"}, method: "get", class: "") do %>
+        <%= label_tag(:name, "Bus Name:") %>
+        <%= text_field_tag(:name) %>
+
+        <%= submit_tag "Search", :class => 'btn btn-info glyphicon glyphicon-search' %>
+    <% end %>
+
+<br><br>
+<p id="notice"><%= notice %></p>
+<h1>Buses</h1>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Registration no</th>
+      <th>Source</th>
+      <th>Destination</th>
+      <th>Total seats</th>
+      <th>Reservations</th>
+      <th>Status</th>
+      <th colspan="3">Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @buses.each do |bus| %>
+      <tr>
+        <td><%= bus.name %></td>
+        <td><%= bus.registration_no %></td>
+        <td><%= bus.source %></td>
+        <td><%= bus.destination %></td>
+        <td><%= bus.total_seats %></td>
+        <td><%= link_to 'All Reservations',  owner_bus_reservations_path(bus), class:'btn' %></td>
+        <td><%= bus.status %></td>
+        <td><%= link_to 'Edit',  edit_owner_bus_path(bus), class:"btn btn-success" %></td>
+        <td><%= link_to 'Delete', owner_bus_path(bus.id), class:"btn btn-danger", method: :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+
+
+<%= link_to 'New Bus', new_owner_bus_path, class:"btn btn-primary" %>
