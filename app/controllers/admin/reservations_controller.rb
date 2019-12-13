@@ -12,19 +12,19 @@ def index
     @owner = Owner.find(params[:owner_id])
     @reservations = Reservation.owner_self_bus_reservations(params, @owner)
 
-  #For admin/owners/:owner_id/buses/:bus_id/reservations
   else
+    #For admin/owners/:owner_id/buses/:bus_id/reservations
     @bus =Bus.friendly.find(params[:bus_id])
     @reservations= @bus.reservations.available_dates(params)
   end
 end
 
 
-  private
-    def require_admin
-      unless current_user.admin?
-        redirect_to root_path, notice:'Access Denied'
-      end
+private
+  def require_admin
+    unless current_user.admin?
+      redirect_to root_path, notice:'Access Denied'
     end
+  end
 
 end
