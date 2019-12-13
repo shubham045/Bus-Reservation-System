@@ -24,6 +24,7 @@ class Owner::ReservationsController < ApplicationController
   end
 
   private
+  
     def require_owner
       unless current_user.owner?
         redirect_to root_path, notice:'Access Denied'
