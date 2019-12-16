@@ -3,7 +3,6 @@ class Owner::BusesController < ApplicationController
  before_action :set_bus, only: [:destroy, :edit, :update]
  before_action :require_owner
 
-
   def index
     @owner=Owner.find_by(user_id:current_user.id)
     @buses = @owner.buses.owner_bus_name(params)
@@ -43,7 +42,6 @@ class Owner::BusesController < ApplicationController
   end
 
   private
-
     def require_owner
      unless current_user.owner?
         redirect_to root_path, alert:'Access Denied'
