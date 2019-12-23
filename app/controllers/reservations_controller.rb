@@ -69,15 +69,10 @@ class ReservationsController < ApplicationController
     end
     return true
   end
-<<<<<<< HEAD
 
-
-=======
->>>>>>> master
-
-    private
-      def reservation_params
-        params.require(:reservation).permit(:date, :no_of_seats)
-      end
+  private
+    def reservation_params
+      params.require(:reservation).permit(:date, :no_of_seats)
+    end
 
 end
