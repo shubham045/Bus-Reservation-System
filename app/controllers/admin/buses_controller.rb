@@ -5,11 +5,11 @@ class Admin::BusesController < ApplicationController
   def index
     if params[:owner_id]
       #For admin/owners/:owner_id/buses
-        owner= Owner.find(params[:owner_id])
-        @buses= Bus.all.where(owner:owner)
+      owner= Owner.find(params[:owner_id])
+      @buses= Bus.all.where(owner:owner)
     else
       #For admin/buses
-          @buses=Bus.admin_all_bus(params)
+      @buses=Bus.admin_all_bus(params)
     end
   end
 
