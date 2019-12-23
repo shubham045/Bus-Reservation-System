@@ -48,32 +48,29 @@ class ReservationsController < ApplicationController
       end
   end
 
-    def new_seat
-        @bus = Bus.find(params[:bus_id])
-        @reservation = @bus.reservations.new
-        @date = params[:date]
-        @total_seats = Array(1..@bus.total_seats)
-        @count_seat = 0
-        for i in 1..@total_seats.size do
-            @count_seat += available_seat?(i,@date) ? 1 : 0
+  def new_seat
+    @bus = Bus.find(params[:bus_id])
+    @reservation = @bus.reservations.new
+    @date = params[:date]
+    @total_seats = Array(1..@bus.total_seats)
+    @count_seat = 0
+    for i in 1..@total_seats.size do
+        @count_seat += available_seat?(i,@date) ? 1 : 0
+    end
+  end
+
+  def available_seat?(seat_num,date)
+    reservation = @bus.reservations.where(date:date)
+    reservation.each do |check_reservation|
+      seats = check_reservation.seats
+        if seats.map(&:seat_no).include?(seat_num)
+          return false
         end
     end
-
-    def available_seat?(seat_num,date)
-        reservation = @bus.reservations.where(date:date)
-        reservation.each do |check_reservation|
-          seats = check_reservation.seats
-            if seats.map(&:seat_no).include?(seat_num)
-              return false
-            end
-        end
-        return true
-    end
-
-
+    return true
+  end
 
     private
-
       def reservation_params
         params.require(:reservation).permit(:date, :no_of_seats)
       end
