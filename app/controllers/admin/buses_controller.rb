@@ -20,4 +20,5 @@ class Admin::BusesController < ApplicationController
         redirect_to root_path, notice:'Access Denied'
       end
     end
+
 end
