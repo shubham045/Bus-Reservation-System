@@ -2,7 +2,7 @@ class ReservationsController < ApplicationController
 
   helper_method :available_seat?
   def index
-      @reservations=current_user.reservations.where(status:'reserve')
+    @reservations=current_user.reservations.where(status:'reserve')
   end
 
   def show
@@ -41,11 +41,11 @@ class ReservationsController < ApplicationController
   def cancle_reservation
     @reservation = Reservation.find(params[:id])
     @reservation.status='cancelled'
-        if @reservation.save
-            redirect_to reservations_path, alert:"Reservation cancelled successfully!"
-        else
-            redirect_to reservations_path, alert:"Something went wrong!"
-        end
+      if @reservation.save
+          redirect_to reservations_path, alert:"Reservation cancelled successfully!"
+      else
+          redirect_to reservations_path, alert:"Something went wrong!"
+      end
   end
 
   def new_seat
@@ -69,11 +69,13 @@ class ReservationsController < ApplicationController
     end
     return true
   end
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> master
 
     private
-
       def reservation_params
         params.require(:reservation).permit(:date, :no_of_seats)
       end
