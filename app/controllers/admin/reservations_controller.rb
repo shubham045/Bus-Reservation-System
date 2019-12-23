@@ -5,7 +5,7 @@ class Admin::ReservationsController < ApplicationController
 def index
   #For admin/reservations
   if params[:owner_id].blank? and params[:bus_id].blank?
-      @reservations= Reservation.available_dates(params)
+    @reservations= Reservation.available_dates(params)
 
   #For admin/owners/:owner_id/reservations
   elsif params[:owner_id] and params[:bus_id].blank?
@@ -20,11 +20,11 @@ def index
 end
 
 
-  private
-    def require_admin
-      unless current_user.admin?
-        redirect_to root_path, notice:'Access Denied'
-      end
+private
+  def require_admin
+    unless current_user.admin?
+      redirect_to root_path, notice:'Access Denied'
     end
+  end
 
 end
