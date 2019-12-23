@@ -30,12 +30,12 @@ class ReservationsController < ApplicationController
   end
 
   def reserved_seat
-     reser = params["reservation"]
-     book = reser[:seat_ids]
-     seat_nos= book.select {|n|  n!='0' }
-     seat_nos.each do |s_n|
-       @reservation.seats.create(seat_no:s_n)
-     end
+   reser = params["reservation"]
+   book = reser[:seat_ids]
+   seat_nos= book.select {|n|  n!='0' }
+   seat_nos.each do |s_n|
+     @reservation.seats.create(seat_no:s_n)
+   end
   end
 
   def cancle_reservation
@@ -49,25 +49,25 @@ class ReservationsController < ApplicationController
   end
 
     def new_seat
-        @bus = Bus.find(params[:bus_id])
-        @reservation = @bus.reservations.new
-        @date = params[:date]
-        @total_seats = Array(1..@bus.total_seats)
-        @count_seat = 0
-        for i in 1..@total_seats.size do
-            @count_seat += available_seat?(i,@date) ? 1 : 0
-        end
+      @bus = Bus.find(params[:bus_id])
+      @reservation = @bus.reservations.new
+      @date = params[:date]
+      @total_seats = Array(1..@bus.total_seats)
+      @count_seat = 0
+      for i in 1..@total_seats.size do
+          @count_seat += available_seat?(i,@date) ? 1 : 0
+      end
     end
 
     def available_seat?(seat_num,date)
-        reservation = @bus.reservations.where(date:date)
-        reservation.each do |check_reservation|
-          seats = check_reservation.seats
-            if seats.map(&:seat_no).include?(seat_num)
-              return false
-            end
-        end
-        return true
+      reservation = @bus.reservations.where(date:date)
+      reservation.each do |check_reservation|
+        seats = check_reservation.seats
+          if seats.map(&:seat_no).include?(seat_num)
+            return false
+          end
+      end
+      return true
     end
 
 
