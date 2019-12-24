@@ -6,6 +6,7 @@ class Admin::OwnersController < ApplicationController
   end
 
   def update_owner
+    
     @owner = Owner.find(params[:id])
     if @owner.user.approve?
       @owner.user.status='suspend'
