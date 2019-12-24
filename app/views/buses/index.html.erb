@@ -8,10 +8,8 @@
 
         <%= label_tag(:destination, "Destination:") %>
         <%= text_field_tag(:destination) %>
-
         <%= submit_tag "Search", :class => 'btn btn-info glyphicon glyphicon-search' %>
     <% end %>
-
 
 <br><br>
 <p id="notice"><%= notice %></p>
@@ -27,7 +25,6 @@
       <th colspan="3">Action</th>
     </tr>
   </thead>
-
   <tbody>
     <% @buses.each do |bus| %>
       <tr>
@@ -37,7 +34,6 @@
         <td><%= bus.destination %></td>
         <td><%= bus.total_seats %></td>
          <td><%= link_to 'Reservation', new_bus_reservation_path(bus), class:'btn btn-success' %></td>
-
       </tr>
     <% end %>
   </tbody>

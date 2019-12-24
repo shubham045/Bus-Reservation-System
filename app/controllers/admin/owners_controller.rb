@@ -20,23 +20,23 @@ class Admin::OwnersController < ApplicationController
   end
 
   def destroy
-      @owner = Owner.find(params[:id])
-      @user= @owner.user
-          if @owner.destroy
-            if @user.destroy
-              redirect_to admin_owners_path, notice:'Owner successfully deleted!'
-            end
-          else
-              edirect_to admin_owners_path, notice:'Owner not deleted!'
-          end
+    @owner = Owner.find(params[:id])
+    @user= @owner.user
+    if @owner.destroy
+      if @user.destroy
+        redirect_to admin_owners_path, notice:'Owner successfully deleted!'
+      end
+    else
+        edirect_to admin_owners_path, notice:'Owner not deleted!'
+    end
   end
 
    private
 
     def require_admin
-           unless current_user.admin?
-               redirect_to root_path, notice:'Access Denied'
-           end
+     unless current_user.admin?
+        redirect_to root_path, notice:'Access Denied'
+     end
     end
 
 end
