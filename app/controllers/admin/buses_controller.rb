@@ -14,7 +14,7 @@ class Admin::BusesController < ApplicationController
 
   private
     def require_admin
-      unless current_user.admin?
+      unless current_user.admin? && ture
         redirect_to root_path, notice:'Access Denied'
       end
     end
