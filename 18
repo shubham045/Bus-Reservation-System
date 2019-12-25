@@ -1,0 +1,14 @@
+2019-12-25 12:13:38 WARN Selenium [DEPRECATION] Selenium::WebDriver::Chrome#driver_path= is deprecated. Use Selenium::WebDriver::Chrome::Service#driver_path= instead.
+
+An error occurred while loading ./=.
+Failure/Error: return load_without_bootsnap(resolved, wrap)
+
+LoadError:
+  cannot load such file -- /home/user25/work/demo_project/repo-1/Bus-Reservation-System/=
+# /home/user25/.rvm/gems/ruby-2.6.3/gems/bootsnap-1.4.4/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:54:in `load'
+# /home/user25/.rvm/gems/ruby-2.6.3/gems/bootsnap-1.4.4/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:54:in `load'
+
+
+Finished in 0.00003 seconds (files took 0.79478 seconds to load)
+0 examples, 0 failures, 1 error occurred outside of examples
+

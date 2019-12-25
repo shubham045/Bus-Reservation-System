@@ -1,6 +1,7 @@
 class Admin::BusesController < ApplicationController
 
   before_action :require_admin
+
   def index
     if params[:owner_id]
       #For admin/owners/:owner_id/buses

@@ -1,7 +1,8 @@
 class Owner::ReservationsController < ApplicationController
 
-  before_action :require_owner
+  # before_action :require_owner
   def index
+    binding.pry
     if params[:bus_id]
       #For owner/buses/bus_id/reservations
       @bus=Bus.friendly.find(params[:bus_id])

@@ -6,6 +6,7 @@ class ReservationsController < ApplicationController
   end
 
   def show
+    "Hello"
   end
 
   def new
