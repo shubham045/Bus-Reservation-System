@@ -23,7 +23,7 @@ gem "nested_form"
 gem 'jquery'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 5.6'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
